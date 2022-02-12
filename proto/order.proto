@@ -6,17 +6,23 @@ import "google/protobuf/empty.proto";
 
 message OrderItem {
     int32 id = 1;
-    string symbolA = 2; // exchange from
-    string symbolB = 3; // exchange to
-    float amountB = 4; // amount of token B
-    string createdAt = 5; // recorded time when order is created
+    string issuer = 2; // issuer
+    string symbolA = 3; // exchange from
+    string symbolB = 4; // exchange to
+    float amountB = 5; // amount of token B
+    string createdAt = 6; // recorded time when order is created
 }
 
 message OrderItems {
     repeated OrderItem orders = 1;
 }
 
+message OrderResponse {
+    string receipt = 1;
+    string createdAt = 2;
+}
+
 service Order {
     rpc GetAll(google.protobuf.Empty) returns (stream OrderItems) {};
-    rpc CreateOne(OrderItem) returns (OrderItem) {};
+    rpc CreateOne(OrderItem) returns (OrderResponse) {};
 }

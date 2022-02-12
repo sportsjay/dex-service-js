@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package tokens;
+
+message DexTopupResponse {
+    string msg = 1;
+    string receipt = 2;
+}
+
+message DexTopupRequest {
+    uint32 amount = 1;
+}
+
+message TokenItem {
+    string symbol = 1; // Token symbol
+    float availableAmount = 2; // Available amount in reserve
+}
+
+message TokenRequest {
+    string symbol = 1;
+}
+
+service Token {
+    rpc GetToken(TokenRequest) returns (TokenItem) {};
+    rpc DexTopupEther(DexTopupRequest) returns (DexTopupResponse) {};
+}

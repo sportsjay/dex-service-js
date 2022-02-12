@@ -10,6 +10,8 @@ import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty
 export class OrderItem extends jspb.Message { 
     getId(): number;
     setId(value: number): OrderItem;
+    getIssuer(): string;
+    setIssuer(value: string): OrderItem;
     getSymbola(): string;
     setSymbola(value: string): OrderItem;
     getSymbolb(): string;
@@ -32,6 +34,7 @@ export class OrderItem extends jspb.Message {
 export namespace OrderItem {
     export type AsObject = {
         id: number,
+        issuer: string,
         symbola: string,
         symbolb: string,
         amountb: number,
@@ -58,5 +61,28 @@ export class OrderItems extends jspb.Message {
 export namespace OrderItems {
     export type AsObject = {
         ordersList: Array<OrderItem.AsObject>,
+    }
+}
+
+export class OrderResponse extends jspb.Message { 
+    getReceipt(): string;
+    setReceipt(value: string): OrderResponse;
+    getCreatedat(): string;
+    setCreatedat(value: string): OrderResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): OrderResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: OrderResponse): OrderResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: OrderResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): OrderResponse;
+    static deserializeBinaryFromReader(message: OrderResponse, reader: jspb.BinaryReader): OrderResponse;
+}
+
+export namespace OrderResponse {
+    export type AsObject = {
+        receipt: string,
+        createdat: string,
     }
 }

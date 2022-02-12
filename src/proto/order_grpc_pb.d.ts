@@ -22,36 +22,36 @@ interface IOrderService_IGetAll extends grpc.MethodDefinition<google_protobuf_em
     responseSerialize: grpc.serialize<order_pb.OrderItems>;
     responseDeserialize: grpc.deserialize<order_pb.OrderItems>;
 }
-interface IOrderService_ICreateOne extends grpc.MethodDefinition<order_pb.OrderItem, order_pb.OrderItem> {
+interface IOrderService_ICreateOne extends grpc.MethodDefinition<order_pb.OrderItem, order_pb.OrderResponse> {
     path: "/orders.Order/CreateOne";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<order_pb.OrderItem>;
     requestDeserialize: grpc.deserialize<order_pb.OrderItem>;
-    responseSerialize: grpc.serialize<order_pb.OrderItem>;
-    responseDeserialize: grpc.deserialize<order_pb.OrderItem>;
+    responseSerialize: grpc.serialize<order_pb.OrderResponse>;
+    responseDeserialize: grpc.deserialize<order_pb.OrderResponse>;
 }
 
 export const OrderService: IOrderService;
 
 export interface IOrderServer extends grpc.UntypedServiceImplementation {
     getAll: grpc.handleServerStreamingCall<google_protobuf_empty_pb.Empty, order_pb.OrderItems>;
-    createOne: grpc.handleUnaryCall<order_pb.OrderItem, order_pb.OrderItem>;
+    createOne: grpc.handleUnaryCall<order_pb.OrderItem, order_pb.OrderResponse>;
 }
 
 export interface IOrderClient {
     getAll(request: google_protobuf_empty_pb.Empty, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<order_pb.OrderItems>;
     getAll(request: google_protobuf_empty_pb.Empty, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<order_pb.OrderItems>;
-    createOne(request: order_pb.OrderItem, callback: (error: grpc.ServiceError | null, response: order_pb.OrderItem) => void): grpc.ClientUnaryCall;
-    createOne(request: order_pb.OrderItem, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.OrderItem) => void): grpc.ClientUnaryCall;
-    createOne(request: order_pb.OrderItem, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.OrderItem) => void): grpc.ClientUnaryCall;
+    createOne(request: order_pb.OrderItem, callback: (error: grpc.ServiceError | null, response: order_pb.OrderResponse) => void): grpc.ClientUnaryCall;
+    createOne(request: order_pb.OrderItem, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.OrderResponse) => void): grpc.ClientUnaryCall;
+    createOne(request: order_pb.OrderItem, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.OrderResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class OrderClient extends grpc.Client implements IOrderClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: Partial<grpc.ClientOptions>);
     public getAll(request: google_protobuf_empty_pb.Empty, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<order_pb.OrderItems>;
     public getAll(request: google_protobuf_empty_pb.Empty, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<order_pb.OrderItems>;
-    public createOne(request: order_pb.OrderItem, callback: (error: grpc.ServiceError | null, response: order_pb.OrderItem) => void): grpc.ClientUnaryCall;
-    public createOne(request: order_pb.OrderItem, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.OrderItem) => void): grpc.ClientUnaryCall;
-    public createOne(request: order_pb.OrderItem, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.OrderItem) => void): grpc.ClientUnaryCall;
+    public createOne(request: order_pb.OrderItem, callback: (error: grpc.ServiceError | null, response: order_pb.OrderResponse) => void): grpc.ClientUnaryCall;
+    public createOne(request: order_pb.OrderItem, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.OrderResponse) => void): grpc.ClientUnaryCall;
+    public createOne(request: order_pb.OrderItem, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.OrderResponse) => void): grpc.ClientUnaryCall;
 }

@@ -9,7 +9,9 @@
     "noImplicitAny": false,
     "strictNullChecks": false,
     "baseUrl": "./",
-    "typeRoots": ["node_modules/@types"],
-    "esModuleInterop": true
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "types": ["@types/node", "@types/mocha", "@types/chai"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   }
 }

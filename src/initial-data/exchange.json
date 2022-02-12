@@ -1,0 +1,32 @@
+[
+  {
+    "symbolA": "MTA",
+    "symbolB": "MTB",
+    "scale": 1
+  },
+  {
+    "symbolA": "MTA",
+    "symbolB": "MTC",
+    "scale": 1
+  },
+  {
+    "symbolA": "MTA",
+    "symbolB": "MTD",
+    "scale": 1
+  },
+  {
+    "symbolA": "MTB",
+    "symbolB": "MTC",
+    "scale": 1
+  },
+  {
+    "symbolA": "MTB",
+    "symbolB": "MTD",
+    "scale": 1
+  },
+  {
+    "symbolA": "MTC",
+    "symbolB": "MTD",
+    "scale": 1
+  }
+]

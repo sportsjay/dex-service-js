@@ -38,6 +38,17 @@ function deserialize_orders_OrderItems(buffer_arg) {
   return order_pb.OrderItems.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_orders_OrderResponse(arg) {
+  if (!(arg instanceof order_pb.OrderResponse)) {
+    throw new Error('Expected argument of type orders.OrderResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_orders_OrderResponse(buffer_arg) {
+  return order_pb.OrderResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var OrderService = exports.OrderService = {
   getAll: {
@@ -56,11 +67,11 @@ var OrderService = exports.OrderService = {
     requestStream: false,
     responseStream: false,
     requestType: order_pb.OrderItem,
-    responseType: order_pb.OrderItem,
+    responseType: order_pb.OrderResponse,
     requestSerialize: serialize_orders_OrderItem,
     requestDeserialize: deserialize_orders_OrderItem,
-    responseSerialize: serialize_orders_OrderItem,
-    responseDeserialize: deserialize_orders_OrderItem,
+    responseSerialize: serialize_orders_OrderResponse,
+    responseDeserialize: deserialize_orders_OrderResponse,
   },
 };
 
