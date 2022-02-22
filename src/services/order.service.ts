@@ -127,12 +127,21 @@ export class OrderServer implements IOrderServer {
       .balanceOf(account)
       .call();
 
-    const exchange = await ExchangeModel.find({
+    let exchange = await ExchangeModel.findOne({
       symbolA: symbolA,
       symbolB: symbolB,
     });
 
-    const scale = exchange[0].scale;
+    if (!exchange)
+      exchange = await ExchangeModel.findOne({
+        symbolA: symbolB,
+        symbolB: symbolA,
+      });
+
+    if (!exchange)
+      callback(new ServiceError(status.NOT_FOUND, "Trade sequence not found!"));
+
+    const scale = exchange.scale;
 
     if (balance < amountB / scale)
       callback(
@@ -221,7 +230,8 @@ export class OrderServer implements IOrderServer {
               new ServiceError(status.INTERNAL, error.message),
               undefined
             );
-          } else logger.info(`${account} has sold ${symbolB} on hash: ${hash}`);
+          } else
+            logger.info(`${account} has received ${symbolB} on hash: ${hash}`);
         }
       );
 

@@ -7,6 +7,7 @@
     "@grpc/grpc-js": "^1.2.2",
     "cli-table": "^0.3.1",
     "dotenv": "^16.0.0",
+    "express": "^4.17.3",
     "google-protobuf": "^3.19.4",
     "grpc-tools": "^1.11.2",
     "grpc_tools_node_protoc_ts": "^5.3.0",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@typechain/truffle-v5": "^7.0.0",
     "@types/chai": "^4.3.0",
+    "@types/express": "^4.17.13",
     "@types/google-protobuf": "^3.15.5",
     "@types/inquirer": "^6.5.0",
     "@types/lowdb": "^1.0.9",
@@ -41,7 +43,8 @@
     "clean": "rm -rf ./src/proto && mkdir -p ./src/proto",
     "build": "sh ./scripts/build-proto.sh ./order.proto ./src/proto && yarn run tsc",
     "prestart": "yarn run build",
-    "start": "node ./dist/index.js",
+    "start:express": "node ./dist/express.server.js",
+    "start:grpc": "node ./dist/grpc.server.js",
     "generate-types": "npx typechain --target=truffle-v5 './dist/abi/*.json'"
   },
   "author": "Jason Nathaniel",
